@@ -1,8 +1,19 @@
 require("tjbru.packer")
 require("tjbru.set")
-require("tjbru.keymap")
+require("tjbru.color")
+require("tjbru.neogit")
 
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
-vim.highlight.on_yank({
-    timeout = 40
+local yank_group = augroup ('HighlightYank', {})
+autocmd('TextYankPost', {
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 40,
+        })
+    end,
 })
