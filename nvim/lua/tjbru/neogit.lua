@@ -2,8 +2,11 @@ local neogit = require('neogit')
 local nnoremap = require('tjbru.keymap').nnoremap
 
 neogit.setup{}
+
 nnoremap("<leader>gs", function()
     neogit.open({
-        kind = "split_above"
+        kind = "vsplit"
     })
 end)
+
+nnoremap("<leader>ga", "<cmd>!git fetch --all<CR>");

@@ -7,6 +7,7 @@ return require('packer').startup(function()
 
     use('nvim-telescope/telescope.nvim')
     use('ThePrimeagen/git-worktree.nvim')
+    use('ThePrimeagen/harpoon')
 
     use('mbbill/undotree')
 
