@@ -14,4 +14,12 @@ return require('packer').startup(function()
     -- Color scheme
     use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
+
+    -- Treesitter
+    use('nvim-treesitter/nvim-treesitter', {
+        run = ':TSUpdate'
+    })
+    use('nvim-treesitter/playground')
+    use('romgrk/nvim-treesitter-context')
+
 end)

@@ -1,12 +1,11 @@
 require("tjbru.packer")
 require("tjbru.set")
-require("tjbru.color")
 require("tjbru.neogit")
 
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-
 local yank_group = augroup ('HighlightYank', {})
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -17,3 +16,5 @@ autocmd('TextYankPost', {
         })
     end,
 })
+
+
