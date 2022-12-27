@@ -31,6 +31,6 @@ vim.opt.updatetime = 50
 -- Dont pass messages to |ins-completeion-menu|
 vim.opt.shortmess:append("c")
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
 vim.g.mapleader = " "

@@ -15,12 +15,12 @@ return require('packer').startup(function()
     use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
 
-    -- Treesitter
-    use('nvim-treesitter/nvim-treesitter', {
-        run = ':TSUpdate'
-    })
-    use('nvim-treesitter/playground')
-    use('romgrk/nvim-treesitter-context')
+   -- Treesitter
+   use('nvim-treesitter/nvim-treesitter', {
+       run = ':TSUpdate'
+   })
+   use('nvim-treesitter/playground')
+   use('romgrk/nvim-treesitter-context') 
 
     -- Autocmp
     use("neovim/nvim-lspconfig")
