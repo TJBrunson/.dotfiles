@@ -1,4 +1,4 @@
---[[require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = "all",
   sync_install = false,
@@ -9,7 +9,6 @@
     additional_vim_regex_highlighting = false,
   },
 }
---]]
 
 
 require'treesitter-context'.setup{
