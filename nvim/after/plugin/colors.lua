@@ -1,4 +1,4 @@
-vim.g.tjbru_colorscheme = "tokyonight"
+vim.g.tjbru_colorscheme = "gruvbox"
 
 function ColorMyPencils()
     vim.g.gruvbox_contrast_dark = 'hard'

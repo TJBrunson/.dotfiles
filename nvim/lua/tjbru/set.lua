@@ -19,6 +19,8 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 
 -- Give more space for displaying messages
 vim.opt.cmdheight = 1
