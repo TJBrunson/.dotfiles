@@ -103,7 +103,7 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").tsserver.setup(config())
+require("lspconfig").ts_ls.setup{}
 
 require("lspconfig").jedi_language_server.setup(config())
 
