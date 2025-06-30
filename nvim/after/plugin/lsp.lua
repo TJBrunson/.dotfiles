@@ -31,6 +31,7 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
