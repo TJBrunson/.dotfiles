@@ -12,7 +12,6 @@ local source_mapping = {
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
 	nvim_lua = "[Lua]",
-	cmp_tabnine = "[TN]",
 	path = "[Path]",
 }
 local lspkind = require("lspkind")
@@ -44,22 +43,12 @@ cmp.setup({
 		format = function(entry, vim_item)
 			vim_item.kind = lspkind.presets.default[vim_item.kind]
 			local menu = source_mapping[entry.source.name]
-			if entry.source.name == "cmp_tabnine" then
-				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-					menu = entry.completion_item.data.detail .. " " .. menu
-				end
-				vim_item.kind = ""
-			end
 			vim_item.menu = menu
 			return vim_item
 		end,
 	},
 
 	sources = {
-		-- tabnine completion? yayaya
-
-		{ name = "cmp_tabnine" },
-
 		{ name = "nvim_lsp" },
 
 		-- For vsnip user.
@@ -75,15 +64,6 @@ cmp.setup({
 
 		{ name = "youtube" },
 	},
-})
-
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
 })
 
 local function config(_config)
@@ -104,13 +84,34 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").ts_ls.setup{}
+-- Load Mason-installed LSPs using the configuration function
+local mason_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+local lspconfig = require("lspconfig")
 
-require("lspconfig").jedi_language_server.setup(config())
+-- Set up servers installed by Mason
 
-require("lspconfig").cssls.setup(config())
-
-require("lspconfig").rust_analyzer.setup(config({
-    cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+-- First, set up clangd for C/C++ - this will work even if Mason isn't installed yet
+lspconfig.clangd.setup(config({
+    cmd = { "clangd", "--background-index", "--suggest-missing-includes" },
+    filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp" },
 }))
 
+pcall(function() lspconfig.ts_ls.setup(config()) end)
+pcall(function() lspconfig.jedi_language_server.setup(config()) end)
+pcall(function() lspconfig.cssls.setup(config()) end)
+
+-- JSON Language Server setup
+pcall(function()
+    lspconfig.jsonls.setup(config({
+        settings = {
+            json = { validate = { enable = true } }
+        }
+    }))
+end)
+
+-- Keep the existing Rust configuration
+pcall(function()
+    lspconfig.rust_analyzer.setup(config({
+        cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+    }))
+end)
