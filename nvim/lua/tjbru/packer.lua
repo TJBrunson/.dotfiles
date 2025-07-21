@@ -3,7 +3,7 @@ return require('packer').startup(function()
     use('wbthomason/packer.nvim')
 
     use('nvim-lua/plenary.nvim')
-    use('TimUntersberger/neogit')
+    use('tpope/vim-fugitive')
 
     use('nvim-telescope/telescope.nvim')
     use('ThePrimeagen/git-worktree.nvim')

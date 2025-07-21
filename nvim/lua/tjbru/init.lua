@@ -1,6 +1,5 @@
 require("tjbru.packer")
 require("tjbru.set")
-require("tjbru.neogit")
 
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
