@@ -88,14 +88,6 @@ end
 local mason_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 local lspconfig = require("lspconfig")
 
--- Set up servers installed by Mason
-
--- First, set up clangd for C/C++ - this will work even if Mason isn't installed yet
-lspconfig.clangd.setup(config({
-    cmd = { "clangd", "--background-index", "--suggest-missing-includes" },
-    filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp" },
-}))
-
 pcall(function() lspconfig.ts_ls.setup(config()) end)
 pcall(function() lspconfig.jedi_language_server.setup(config()) end)
 pcall(function() lspconfig.cssls.setup(config()) end)
