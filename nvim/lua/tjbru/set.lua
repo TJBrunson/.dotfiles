@@ -34,6 +34,6 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append("c")
 
 vim.opt.colorcolumn = "120"
-vim.opt.tags = "./tags;,./.tags;,./src/tags;"
+vim.opt.tags = "./tags;,./.tags;,./src/tags;,.src/.tags;"
 
 vim.g.mapleader = " "
