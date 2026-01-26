@@ -84,26 +84,18 @@ local function config(_config)
 	}, _config or {})
 end
 
--- Load Mason-installed LSPs using the configuration function
-local mason_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-local lspconfig = require("lspconfig")
+-- Setup LSP servers using vim.lsp.config (Neovim 0.11+)
+local servers = {
+    ts_ls = config(),
+    jedi_language_server = config(),
+    cssls = config(),
+    jsonls = config({ settings = { json = { validate = { enable = true } } } }),
+    rust_analyzer = config({ cmd = { "rustup", "run", "nightly", "rust-analyzer" } }),
+}
 
-pcall(function() lspconfig.ts_ls.setup(config()) end)
-pcall(function() lspconfig.jedi_language_server.setup(config()) end)
-pcall(function() lspconfig.cssls.setup(config()) end)
-
--- JSON Language Server setup
-pcall(function()
-    lspconfig.jsonls.setup(config({
-        settings = {
-            json = { validate = { enable = true } }
-        }
-    }))
-end)
-
--- Keep the existing Rust configuration
-pcall(function()
-    lspconfig.rust_analyzer.setup(config({
-        cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-    }))
-end)
+for server, cfg in pairs(servers) do
+    pcall(function()
+        vim.lsp.enable(server)
+        vim.lsp.config(server, cfg)
+    end)
+end
