@@ -44,3 +44,6 @@ nnoremap("<leader>R", "<cmd>bufdo e!<CR>")
 -- Open or create daily log file (<YYYY-MM-DD>.md) in cwd
 nnoremap("<leader>td", function() require("tjbru.daily").open() end)
 
+-- Open yesterday's daily log (if it exists)
+nnoremap("<leader>ty", function() require("tjbru.daily").open_previous() end)
+
