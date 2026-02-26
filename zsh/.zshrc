@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/Users/tjbru/Library/Python/3.10/bin:/Users/tjbru/.local/bin:$PATH
@@ -16,7 +9,7 @@ export ZSH="/Users/tjbru/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -123,16 +116,9 @@ POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='red'
 alias gs='git status'
 alias ga='git add'
 
-alias proxyon='ssh -fNT -L 4320:proxy.corp.elemental.com:3128 tjbru@bastion.elemental.com'
-alias proxyoff='kill $(pgrep -f "ssh -fNT -L 4320:proxy.corp.elemental.com")'
-alias pcheck='ps aux | grep "fNT -L 4320:proxy"'
-
+# Neovim
 alias nv='nvim'
-
-# ssh machine aliases
-alias dev="ssh dev-dsk-tjbru-2a-512b33af.us-west-2.amazon.com"
-export DEVDSK="dev-dsk-tjbru-2a-512b33af.us-west-2.amazon.com"
-alias uefi="ssh uefi-worker-tjbru.elementalad.com"
+nvtd() { nvim -c "lua require('tjbru.daily').open('some/folder/daily')"; }
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -141,8 +127,3 @@ eval "$(pyenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH=$PATH:/Users/tjbru/.toolbox/bin
-eval "$(/opt/homebrew/bin/brew shellenv)"
-# Set up mise for runtime management
-eval "$(mise activate zsh)"

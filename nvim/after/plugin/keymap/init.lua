@@ -41,3 +41,6 @@ nnoremap("<leader>r", "<cmd>edit<CR>")
 -- Reload all buffers with <leader>R
 nnoremap("<leader>R", "<cmd>bufdo e!<CR>")
 
+-- Open or create daily log file (<YYYY-MM-DD>.md) in cwd
+nnoremap("<leader>td", function() require("tjbru.daily").open() end)
+
