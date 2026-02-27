@@ -105,9 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Configs for powerlevel10k
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='red'
@@ -115,6 +112,8 @@ POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='red'
 # Aliases
 alias gs='git status'
 alias ga='git add'
+alias gswc='git switch -c'
+alias gsw='git switch'
 
 # Neovim
 alias nv='nvim'
