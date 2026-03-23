@@ -33,6 +33,10 @@ vim.opt.updatetime = 50
 -- Dont pass messages to |ins-completeion-menu|
 vim.opt.shortmess:append("c")
 
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+vim.opt.emoji = true
+
 vim.opt.colorcolumn = "120"
 vim.opt.tags = "./tags;,./.tags;,./src/tags;,.src/.tags;"
 
