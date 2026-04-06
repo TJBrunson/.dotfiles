@@ -2,17 +2,16 @@
 
 # Check for exactly one argument
 if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 {amazon|amazon-remote|macos|server}"
+    echo "Usage: $0 {macos|server}"
     exit 1
 fi
 
 # Check if the argument is one of the allowed values
-if [[ "$1" != "amazon" && "$1" != "amazon-remote" && "$1" != "macos" && "$1" != "server" ]]; then
+if [[ "$1" != "macos" && "$1" != "server" ]]; then
     echo "Invalid argument: $1"
-    echo "Usage: $0 {amazon|amazon-remote|macos|server}"
+    echo "Usage: $0 {macos|server}"
     exit 1
 fi
-
 
 # Create necessary directories
 mkdir -p ~/.config/nvim
@@ -35,16 +34,12 @@ ln -sf ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 echo "Symbolic links created"
 
 # Hammerspoon configuration
-if [ "$1" == "amazon" ]; then
-    echo "Configuring Hammerspoon for Amazon"
-    ln -s ~/.dotfiles/hammerspoon/work.lua ~/.hammerspoon/init.lua
-elif [ "$1" == "macos" ]; then
+if [ "$1" == "macos" ]; then
     echo "Configuring Hammerspoon for macOS"
     ln -s ~/.dotfiles/hammerspoon/personal.lua ~/.hammerspoon/init.lua
 else
-    echo "Not 'amazon' or 'macos'. Skipping Hammerspoon"
+    echo "Not 'work' or 'macos'. Skipping Hammerspoon"
 fi
-
 
 # Check for cargo and install ripgrep
 if command -v rg &> /dev/null; then
