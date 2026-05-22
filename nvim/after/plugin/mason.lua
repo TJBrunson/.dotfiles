@@ -29,6 +29,7 @@ mason_lspconfig.setup({
     ensure_installed = {
         "clangd",        -- C/C++
         "ts_ls",      -- TypeScript/JavaScript (standard name)
+        "jdtls",         -- Java
         "rust_analyzer", -- Rust
         "jsonls",        -- JSON with linting and schema support
         "pyright",       -- Python

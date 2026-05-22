@@ -34,7 +34,7 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append("c")
 
 vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+vim.opt.fileencodings = "utf-8"
 vim.opt.emoji = true
 
 vim.opt.colorcolumn = "120"

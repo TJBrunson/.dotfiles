@@ -27,8 +27,12 @@ rm -f ~/.hammerspoon/init.lua
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/lazygit ~/.config/lazygit
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
-ln -s ~/.dotfilse/zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
+# oh-my-zsh plugin installs
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Print status
 echo "Symbolic links created"

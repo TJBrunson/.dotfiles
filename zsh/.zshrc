@@ -1,9 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/Users/tjbru/Library/Python/3.10/bin:/Users/tjbru/.local/bin:$PATH
+export PATH="/usr/local/go/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/tjbru/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+
+# Java and Maven
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
+export M3_HOME="/opt/homebrew/Cellar/maven/3.9.14"
+export M3="$M3_HOME/bin"
+export PATH="$M3:$PATH"
+
+# proxy
+export HTTP_PROXY=http://www-proxy-adcq7-new.us.oracle.com:80/
+export HTTPS_PROXY=http://www-proxy-adcq7-new.us.oracle.com:80/
+export ALL_PROXY=http://tw-proxy-hyd.oraclecorp.com:80
+export NO_PROXY='localhost,127.0.0.1,.oracle.com,.oraclecorp.com,.oracleiaas.com,.grungy.us,cdn.theoplayer.com,.artifactory.oci.oraclecorp.com'
+
+# repo location exports
+export OVE_REPOS=/Users/tbrunson/code
+export MOQ_RS="$OVE_REPOS/moq-rs"
+export OVE_PLAYER_SDK="$OVE_REPOS/ove-playback-sdk"
+export SHAKA_PLAYER="$OVE_REPOS/shaka-player"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -73,7 +92,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
 	zsh-autosuggestions
-	web-search
 	zsh-syntax-highlighting
 )
 
@@ -109,6 +127,11 @@ source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='red'
 
+# If we have a .zshrc_work, load it
+if [ -f ~/.zshrc_work ]; then
+  source ~/.zshrc_work
+fi
+
 # Aliases
 alias gs='git status'
 alias ga='git add'
@@ -126,3 +149,7 @@ eval "$(pyenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+alias scm-ssh='/Users/tbrunson/.ssh/scm-script.sh'
+scm-ssh start_agent

@@ -1,4 +1,4 @@
-require("tjbru.packer")
+require("tjbru.lazy")
 require("tjbru.set")
 require("tjbru.lazygit")
 

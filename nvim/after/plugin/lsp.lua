@@ -87,6 +87,7 @@ end
 -- Setup LSP servers using vim.lsp.config (Neovim 0.11+)
 local servers = {
     ts_ls = config(),
+    jdtls = config(),
     jedi_language_server = config(),
     cssls = config(),
     jsonls = config({ settings = { json = { validate = { enable = true } } } }),
