@@ -1,7 +1,7 @@
 -- Set up Mason package manager
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
-    print("Mason not found, please run :PackerSync first")
+    print("Mason not found, please run :Lazy+U first")
     return
 end
 
@@ -19,7 +19,7 @@ mason.setup({
 -- Try to set up mason-lspconfig
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
-    print("mason-lspconfig not found, please run :PackerSync first")
+    print("mason-lspconfig not found, please run :Lazy+U first")
     return
 end
 

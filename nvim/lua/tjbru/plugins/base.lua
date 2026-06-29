@@ -1,5 +1,4 @@
 return {
-    "wbthomason/packer.nvim",
     "nvim-lua/plenary.nvim",
     "tpope/vim-fugitive",
     "kdheepak/lazygit.nvim",
