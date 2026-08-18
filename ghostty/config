@@ -1,1 +1,3 @@
-theme = Japanesque
+background-opacity = 0.95
+background-blur = 10
+background-opacity-cells = true
